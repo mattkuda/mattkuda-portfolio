@@ -50,6 +50,7 @@ function formatPace(
 export async function GET() {
   try {
     const accessToken = await getAccessToken();
+    if (!accessToken) throw new Error("No access token returned from Strava");
 
     const after = Math.floor(Date.now() / 1000) - 365 * 24 * 60 * 60;
     const activities: StravaActivity[] = [];
@@ -148,9 +149,10 @@ export async function GET() {
       totalMileage,
       weeks,
     });
-  } catch {
+  } catch (err) {
+    console.error("Strava route error:", err);
     return NextResponse.json(
-      { error: "Failed to fetch Strava data" },
+      { error: "Failed to fetch Strava data", detail: String(err) },
       { status: 500 }
     );
   }
