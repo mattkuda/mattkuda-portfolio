@@ -17,8 +17,7 @@ export const projects: Project[] = [
     image: "/portfolio/evex.png",
     year: 2026,
     technologies: ["Swift", "Node.js", "Supabase", "OpenAI"],
-    demoUrl: "https://evex.app",
-    videoUrl: "https://www.youtube.com/shorts/D-Khjeua1q8",
+    demoUrl: "https://evexapp.com",
   },
   {
     title: "FlowThread",
@@ -39,6 +38,7 @@ export const projects: Project[] = [
     technologies: ["React Native", "Node.js", "Expo", "MongoDB"],
     demoUrl: "https://tabafit.com",
     codeUrl: "https://github.com/mattkuda/tabafit",
+    videoUrl: "https://www.youtube.com/watch?v=D-Khjeua1q8",
   },
   {
     title: "Bad Call AI",

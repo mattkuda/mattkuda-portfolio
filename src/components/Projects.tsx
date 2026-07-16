@@ -22,7 +22,7 @@ export function Projects({ limit }: { limit?: number }) {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-sm hover:underline"
+                    className="font-medium text-sm underline decoration-[#3a3a3a] underline-offset-[3px] transition-colors hover:decoration-white"
                   >
                     {project.title}
                   </a>
