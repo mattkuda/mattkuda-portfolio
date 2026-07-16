@@ -61,6 +61,10 @@ export async function GET() {
         `https://www.strava.com/api/v3/athlete/activities?after=${after}&per_page=200&page=${page}`,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
+      if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Strava activities request failed (${res.status}): ${body}`);
+      }
       const data = await res.json();
       if (!Array.isArray(data) || !data.length) break;
       activities.push(...data);

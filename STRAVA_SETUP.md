@@ -6,6 +6,14 @@ The Strava API is **free** for personal use. You get:
 
 More than enough for a portfolio site.
 
+> ⚠️ **June 2026 Developer Program change:** Strava now requires the account that owns
+> the API application to have an active Strava subscription (Standard Tier). Apps whose
+> owners don't have one were deactivated on June 30, 2026 — every data endpoint returns
+> `403 {"errors":[{"resource":"Application","field":"Status","code":"Inactive"}]}` even
+> though the OAuth token refresh still succeeds. To fix: subscribe (or redeem the 3-month
+> voucher Strava emailed developers on June 16, 2026, subject "Strava API Update"), then
+> reactivate the app at [strava.com/settings/api](https://www.strava.com/settings/api).
+
 ## Step 1: Create a Strava API Application
 
 1. Go to [https://www.strava.com/settings/api](https://www.strava.com/settings/api)

@@ -230,6 +230,7 @@ function Tooltip({
 
 export function StravaGrid() {
   const [data, setData] = useState<StravaData | null>(null);
+  const [failed, setFailed] = useState(false);
   const [hovered, setHovered] = useState<{
     day: DayData;
     el: HTMLDivElement;
@@ -237,12 +238,21 @@ export function StravaGrid() {
 
   useEffect(() => {
     fetch("/api/strava")
-      .then((res) => res.json())
-      .then(setData)
-      .catch(() => setData(null));
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((d) => {
+        if (d && d.weeks) setData(d);
+        else setFailed(true);
+      })
+      .catch(() => setFailed(true));
   }, []);
 
-  if (!data || !data.weeks) {
+  // Hide the section entirely if Strava data can't be loaded
+  if (failed) return null;
+
+  if (!data) {
     return (
       <section className="py-12">
         <div className="section-divider mb-8" />
